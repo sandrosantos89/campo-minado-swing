@@ -23,7 +23,7 @@ public class Tabuleiro implements CampoObservador {
 		associarOsVizinhos();
 		sortearMinas();
 	}
-	
+
 	public void paraCada(Consumer<Campo> funcao) {
 		campos.forEach(funcao);
 	}
@@ -83,8 +83,7 @@ public class Tabuleiro implements CampoObservador {
 		campos.stream().forEach(c -> c.reiniciar());
 		sortearMinas();
 	}
-	
-	
+
 	public int getLinhas() {
 		return linhas;
 	}
@@ -103,7 +102,7 @@ public class Tabuleiro implements CampoObservador {
 	}
 
 	private void mostrarMinas() {
-		campos.stream().filter(c -> c.isMinado()).forEach(c -> c.setAberto(true));
+		campos.stream().filter(c -> c.isMinado()).filter(c -> !c.isMarcado()).forEach(c -> c.setAberto(true));
 	}
 
 }
